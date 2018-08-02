@@ -1,4 +1,4 @@
-ARG busybox_version=1.29
+ARG busybox_version=1.29.2
 ARG debian_version=stretch-20180716
 
 FROM debian:${debian_version} as debian
