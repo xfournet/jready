@@ -1,0 +1,2 @@
+/busybox/hooks/build       text eol=lf
+/busybox/hooks/post_push   text eol=lf

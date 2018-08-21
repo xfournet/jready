@@ -1,0 +1,7 @@
+#!/bin/sh
+set -e
+
+docker build --build-arg "build_date=$(date -u +"%Y-%m-%dT%H:%M:%SZ")" \
+             --build-arg "vcs_ref=$(git rev-parse --short HEAD)" \
+             --build-arg "image_version=$IMAGE_NAME" \
+             -f "$DOCKERFILE_PATH" -t "$IMAGE_NAME" .

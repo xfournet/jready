@@ -1,0 +1,9 @@
+#!/bin/sh
+set -e
+
+repo=$(echo "$IMAGE_NAME" | cut -d ':' -f 1)
+tag=$(echo "$IMAGE_NAME" | cut -d ':' -f 2)
+tag=$(echo "$tag" | cut -d '-' -f 1)
+
+docker tag "$IMAGE_NAME" "${repo}:${tag}"
+docker push "${repo}:${tag}"
