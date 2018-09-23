@@ -1,0 +1,7 @@
+#!/bin/bash
+set -e
+
+docker build -f "$DOCKERFILE_PATH" -t $DOCKER_REPO:${DOCKER_TAG//,/ -t $DOCKER_REPO:} . \
+             --build-arg "build_date=$(date -u +"%Y-%m-%dT%H:%M:%SZ")" \
+             --build-arg "vcs_ref=$SOURCE_COMMIT" \
+             --build-arg "image_version=$SOURCE_BRANCH"
