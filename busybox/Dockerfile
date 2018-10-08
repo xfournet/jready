@@ -1,4 +1,4 @@
-ARG busybox_version=1.29.2
+ARG busybox_version=1.29.3
 ARG debian_version=stretch-20180716
 
 # Extract additionnal glibc files from the debian image
