@@ -53,7 +53,6 @@ RUN  \
         "$ALPINE_GLIBC_I18N_PACKAGE_FILENAME" && \
     rm  -r \
         "/etc/apk/keys/sgerrand.rsa.pub" \
-        "/etc/apk/keys" \
         "$ALPINE_GLIBC_BASE_PACKAGE_FILENAME" \
         "$ALPINE_GLIBC_BIN_PACKAGE_FILENAME" \
         "$ALPINE_GLIBC_I18N_PACKAGE_FILENAME" && \
