@@ -1,4 +1,4 @@
-ARG alpine_version=3.8
+ARG alpine_version=3.9
 ARG alpine_glibc_version=2.28-r0
 
 # extract libgcc_s from the same base image than the one used to build glibc
