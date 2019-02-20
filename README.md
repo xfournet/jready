@@ -35,7 +35,7 @@ Create a minimal JRE image. If needed the `JLINK_MODULES` list (comma-separated)
 ```Dockerfile
 FROM xfournet/jready:busybox
 
-ARG JDK_URL=https://download.java.net/java/GA/jdk11/28/GPL/openjdk-11+28_linux-x64_bin.tar.gz
+ARG JDK_URL=https://download.java.net/java/GA/jdk11/9/GPL/openjdk-11.0.2_linux-x64_bin.tar.gz
 ARG JLINK_OPTIONS="--vm=server --compress=2 --no-header-files --no-man-pages"
 ARG JLINK_MODULES="java.base"
 ARG JRE_DIR="/opt/jre"
