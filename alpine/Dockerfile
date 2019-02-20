@@ -1,11 +1,11 @@
 ARG alpine_version=3.9
-ARG alpine_glibc_version=2.28-r0
+ARG alpine_glibc_version=2.29-r0
 
-# extract libgcc_s from the same base image than the one used to build glibc
-ARG alpine_pkg_glibc_image=ubuntu:16.04
+# extract libgcc_s from the same base image than the one used to build glibc (see https://github.com/sgerrand/docker-glibc-builder/blob/master/Dockerfile)
+ARG alpine_pkg_glibc_image=ubuntu:18.04
 
 FROM ${alpine_pkg_glibc_image} as libgcc
-RUN chmod +x /lib/x86_64-linux-gnu/libz.so.1.2.8
+RUN chmod +x /lib/x86_64-linux-gnu/libz.so.1.2.11
 
 FROM alpine:${alpine_version}
 
@@ -25,7 +25,7 @@ LABEL org.label-schema.schema-version="1.0" \
 ENV LANG=C.UTF-8
 
 # Add the extra libs
-COPY --from=libgcc /lib/x86_64-linux-gnu/libgcc_s.so.1 /lib/x86_64-linux-gnu/libz.so.1.2.8 /usr/glibc-compat/lib/
+COPY --from=libgcc /lib/x86_64-linux-gnu/libgcc_s.so.1 /lib/x86_64-linux-gnu/libz.so.1.2.11 /usr/glibc-compat/lib/
 
 RUN  \
 # Download and install the 3 glibc apks
