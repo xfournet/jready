@@ -4,7 +4,7 @@ jready is a set of minimalist Docker images that are ready to execute a JRE.
 More than a small size, the goal of minimal Docker image is to enhance security by reducing the attack surface.
 
 Note than theses images don't include a JRE:
-* you can freely to choose the JRE vendor (eg Oracle or OpenJDK) and version (tested from 1.7 to 11)
+* you can freely choose the JRE vendor (eg Oracle or OpenJDK) and version (tested from 1.7 to 11)
 * with JRE 9 and higher, you can freely build your own minimal JRE thanks to [jlink](https://docs.oracle.com/en/java/javase/11/tools/jlink.html). See example below.
 
 An example below shows how a JRE can be integrated on top of theses images.
