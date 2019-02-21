@@ -13,16 +13,16 @@ An example below shows how a JRE can be integrated on top of theses images.
 
 Based on the offical [BusyBox glibc image](https://hub.docker.com/_/busybox)
 
-[![](https://images.microbadger.com/badges/version/xfournet/jready:busybox-1.30.0.svg)](https://microbadger.com/images/xfournet/jready:busybox-1.30.0)
-[![](https://images.microbadger.com/badges/image/xfournet/jready:busybox-1.30.0.svg)](https://microbadger.com/images/xfournet/jready:busybox-1.30.0)
+[![](https://images.microbadger.com/badges/version/xfournet/jready:busybox-1.30.1.svg)](https://microbadger.com/images/xfournet/jready:busybox-1.30.1)
+[![](https://images.microbadger.com/badges/image/xfournet/jready:busybox-1.30.1.svg)](https://microbadger.com/images/xfournet/jready:busybox-1.30.1)
 
 
 ## Alpine based [(alpine/Dockerfile)](https://github.com/xfournet/jready/blob/master/alpine/Dockerfile)
 
 Based on the offical [Alpine image](https://hub.docker.com/_/alpine) and [Alpine GLIBC package](https://github.com/sgerrand/alpine-pkg-glibc)
 
-[![](https://images.microbadger.com/badges/version/xfournet/jready:alpine-3.8.2.svg)](https://microbadger.com/images/xfournet/jready:alpine-3.8.2)
-[![](https://images.microbadger.com/badges/image/xfournet/jready:alpine-3.8.2.svg)](https://microbadger.com/images/xfournet/jready:alpine-3.8.2)
+[![](https://images.microbadger.com/badges/version/xfournet/jready:alpine-3.9.0.svg)](https://microbadger.com/images/xfournet/jready:alpine-3.9.0)
+[![](https://images.microbadger.com/badges/image/xfournet/jready:alpine-3.9.0.svg)](https://microbadger.com/images/xfournet/jready:alpine-3.9.0)
 
 # Example
 
