@@ -1,4 +1,4 @@
-ARG alpine_version=3.10.0
+ARG alpine_version=3.10.1
 ARG alpine_glibc_version=2.29-r0
 
 # extract libgcc_s from the same base image than the one used to build glibc (see https://github.com/sgerrand/docker-glibc-builder/blob/master/Dockerfile)
