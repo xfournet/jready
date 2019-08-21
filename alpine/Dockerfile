@@ -1,8 +1,8 @@
-ARG alpine_version=3.10.1
-ARG alpine_glibc_version=2.29-r0
+ARG alpine_version=3.10.2
+ARG alpine_glibc_version=2.30-r0
 
 # extract libgcc_s from the same base image than the one used to build glibc (see https://github.com/sgerrand/docker-glibc-builder/blob/master/Dockerfile)
-ARG alpine_pkg_glibc_image=ubuntu:18.04
+ARG alpine_pkg_glibc_image=ubuntu:19.04
 
 FROM ${alpine_pkg_glibc_image} as libgcc
 RUN chmod +x /lib/x86_64-linux-gnu/libz.so.1.2.11
