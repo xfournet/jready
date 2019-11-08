@@ -1,4 +1,4 @@
-ARG alpine_version=3.10.2
+ARG alpine_version=3.10.3
 ARG alpine_glibc_version=2.30-r0
 
 # extract libgcc_s from the same base image than the one used to build glibc (see https://github.com/sgerrand/docker-glibc-builder/blob/master/Dockerfile)
@@ -62,6 +62,10 @@ RUN  \
     echo "export LANG=$LANG" > /etc/profile.d/locale.sh && \
     \
     apk del --no-cache glibc-i18n && \
+    \
+# Fix ldconfig
+    rm /usr/glibc-compat/lib/ld-linux-x86-64.so.2 && \
+    ln -s /usr/glibc-compat/lib/ld-2.30.so /usr/glibc-compat/lib/ld-linux-x86-64.so.2 && \
     \
 # Fix ldd
     sed -i -e 's#/bin/bash#/bin/sh#' /usr/glibc-compat/bin/ldd && \
