@@ -1,5 +1,5 @@
-ARG busybox_version=1.31.0
-ARG debian_version=buster-20190812-slim
+ARG busybox_version=1.31.1
+ARG debian_version=buster-20191014-slim
 
 # Extract additionnal glibc files from the debian image
 FROM debian:${debian_version} as debian
