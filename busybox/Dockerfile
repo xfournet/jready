@@ -1,13 +1,13 @@
-ARG busybox_version=1.31.0
-ARG debian_version=stretch-20190204-slim
+ARG busybox_version=1.31.1
+ARG debian_version=buster-20191014-slim
 
 # Extract additionnal glibc files from the debian image
 FROM debian:${debian_version} as debian
 
 RUN mkdir -p /busybox/lib && \
-  cp -p /lib/x86_64-linux-gnu/libdl-2.24.so /busybox/lib/libdl.so.2 && \
+  cp -p /lib/x86_64-linux-gnu/libdl.so.2 /busybox/lib/libdl.so.2 && \
   cp -p /lib/x86_64-linux-gnu/librt.so.1 /busybox/lib/librt.so.1 && \
-  cp -p /lib/x86_64-linux-gnu/libz.so.1.2.8 /busybox/lib/libz.so.1 && \
+  cp -p /lib/x86_64-linux-gnu/libz.so.1 /busybox/lib/libz.so.1 && \
   cp -p /lib/x86_64-linux-gnu/libgcc_s.so.1 /busybox/lib/libgcc_s.so.1
 
 
