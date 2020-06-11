@@ -1,0 +1,10 @@
+version: 2
+updates:
+  - package-ecosystem: "docker"
+    directory: "/alpine"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "docker"
+    directory: "/busybox"
+    schedule:
+      interval: "weekly"
