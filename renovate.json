@@ -1,5 +1,28 @@
 {
   "extends": [
-    "config:base"
+    "config:base",
+    ":prHourlyLimitNone",
+    ":prConcurrentLimitNone",
+    ":rebaseStalePrs",
+    "docker:enableMajor"
+  ],
+  "regexManagers": [
+    {
+      "fileMatch": ["^.*/Dockerfile$"],
+      "matchStrings": [
+        "ARG .*_image=(?<depName>.*?):(?<currentValue>.*?)\\s"
+      ],
+      "datasourceTemplate": "docker",
+      "versioningTemplate": "docker"
+    },
+    {
+      "fileMatch": ["^.*/Dockerfile$"],
+      "matchStrings": [
+        "ARG alpine_glibc_version=(?<currentValue>.*)\\s"
+      ],
+      "datasourceTemplate": "github-tags",
+      "depNameTemplate": "sgerrand/alpine-pkg-glibc",
+      "versioningTemplate": "loose"
+    }
   ]
 }

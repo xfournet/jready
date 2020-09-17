@@ -1,8 +1,8 @@
-ARG busybox_version=1.32.0
-ARG debian_version=buster-20200607-slim
+ARG busybox_image=busybox:1.32.0-glibc
+ARG debian_image=debian:buster-20200607-slim
 
 # Extract additionnal glibc files from the debian image
-FROM debian:${debian_version} as debian
+FROM ${debian_image} as debian
 
 RUN mkdir -p /busybox/lib && \
   cp -p /lib/x86_64-linux-gnu/libdl.so.2 /busybox/lib/libdl.so.2 && \
@@ -12,7 +12,7 @@ RUN mkdir -p /busybox/lib && \
 
 
 # Add the additional glibc file in the busybox image
-FROM busybox:${busybox_version}-glibc
+FROM ${busybox_image}
 
 ARG busybox_version
 ARG debian_version
