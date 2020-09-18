@@ -4,8 +4,8 @@ jready is a set of minimalist Docker images that are ready to execute a JRE.
 More than a small size, the goal of minimal Docker image is to enhance security by reducing the attack surface.
 
 Note than theses images don't include a JRE:
-* you can freely choose the JRE vendor (eg Oracle or OpenJDK) and version (tested from 1.7 to 11)
-* with JRE 9 and higher, you can freely build your own minimal JRE thanks to [jlink](https://docs.oracle.com/en/java/javase/11/tools/jlink.html). See example below.
+* you can freely choose the JRE vendor (eg Oracle or OpenJDK) and version (tested from 1.7 to 15)
+* with JRE 9 and higher, you can freely build your own minimal JRE thanks to [jlink](https://docs.oracle.com/en/java/javase/15/docs/specs/man/jlink.html). See example below.
 
 An example below shows how a JRE can be integrated on top of theses images.
 
@@ -26,7 +26,7 @@ Based on the offical [Alpine image](https://hub.docker.com/_/alpine) and [Alpine
 
 # Example
 
-This example is based on AdoptOpenJDK 13. The example starts from the `busybox` based image but `alpine` can be used instead without any further changes in the Dockerfile. 
+This example is using AdoptOpenJDK 15. It's based from the `busybox` based image but `alpine` can be used instead with no other changes in the Dockerfile. 
 
 **Dockerfile**
 
@@ -35,7 +35,7 @@ Create a minimal JRE image. If needed the `JLINK_MODULES` list (comma-separated)
 ```Dockerfile
 FROM xfournet/jready:busybox
 
-ARG JDK_URL=https://github.com/AdoptOpenJDK/openjdk13-binaries/releases/download/jdk-13.0.1%2B9/OpenJDK13U-jdk_x64_linux_hotspot_13.0.1_9.tar.gz
+ARG JDK_URL=https://github.com/AdoptOpenJDK/openjdk15-binaries/releases/download/jdk-15%2B36/OpenJDK15U-jdk_x64_linux_hotspot_15_36.tar.gz
 ARG JLINK_OPTIONS="--vm=server --compress=2 --no-header-files --no-man-pages"
 ARG JLINK_MODULES="java.base"
 ARG JRE_DIR="/opt/jre"
