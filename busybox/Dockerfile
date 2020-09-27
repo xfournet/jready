@@ -12,7 +12,7 @@ RUN mkdir -p /busybox/lib && \
 
 
 # Add the additional glibc file in the busybox image
-FROM ${busybox_image}
+FROM ${busybox_image} as base
 
 ARG busybox_version
 ARG debian_version
@@ -29,3 +29,33 @@ LABEL org.label-schema.schema-version="1.0" \
       org.label-schema.build-date="$build_date"
 
 COPY --from=debian /busybox/ /
+
+
+# Smoke test
+FROM base as test
+
+ARG JDK_URL=https://github.com/AdoptOpenJDK/openjdk15-binaries/releases/download/jdk-15%2B36/OpenJDK15U-jdk_x64_linux_hotspot_15_36.tar.gz
+ARG JLINK_OPTIONS="--vm=server --compress=2 --no-header-files --no-man-pages"
+ARG JLINK_MODULES="java.base,jdk.compiler"
+ARG JRE_DIR="/opt/jre"
+
+ENV PATH="${JRE_DIR}/bin:${PATH}"
+
+RUN \
+    # Download and extract JDK
+    wget ${JDK_URL} -O - | tar xz -C /tmp && \
+    # Build customized JRE
+    /tmp/jdk-*/bin/jlink --output ${JRE_DIR} --add-modules ${JLINK_MODULES} ${JLINK_OPTIONS} && \
+    # Remove JDK
+    rm -r /tmp/jdk-* && \
+    echo -e "\
+class HelloWorld {\n\
+    public static void main(String[] args) {\n\
+        System.out.println(\"Hello World!\");\n\
+    }\n\
+}\n" > HelloWorld.java && \
+    java HelloWorld.java
+
+
+# Default target is 'base' image
+FROM base

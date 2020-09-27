@@ -4,10 +4,14 @@ ARG alpine_glibc_version=2.32-r0
 # extract libz & libgcc_s from the same base image than the one used to build glibc (see https://github.com/sgerrand/docker-glibc-builder/blob/master/Dockerfile)
 ARG alpine_pkg_glibc_image=ubuntu:20.10
 
+
+# Extract libz from Ubuntu image
 FROM ${alpine_pkg_glibc_image} as libgcc
 RUN chmod +x /lib/x86_64-linux-gnu/libz.so.1.2.11
 
-FROM ${alpine_image}
+
+# Create the image based on Alpine with the additional package and files
+FROM ${alpine_image} as base
 
 ARG alpine_glibc_version
 ARG vcs_ref
@@ -80,3 +84,33 @@ RUN  \
     rm -r \
         /var/cache/ldconfig/aux-cache \
         /var/cache/ldconfig
+
+
+# Smoke test
+FROM base as test
+
+ARG JDK_URL=https://github.com/AdoptOpenJDK/openjdk15-binaries/releases/download/jdk-15%2B36/OpenJDK15U-jdk_x64_linux_hotspot_15_36.tar.gz
+ARG JLINK_OPTIONS="--vm=server --compress=2 --no-header-files --no-man-pages"
+ARG JLINK_MODULES="java.base,jdk.compiler"
+ARG JRE_DIR="/opt/jre"
+
+ENV PATH="${JRE_DIR}/bin:${PATH}"
+
+RUN \
+    # Download and extract JDK
+    wget ${JDK_URL} -O - | tar xz -C /tmp && \
+    # Build customized JRE
+    /tmp/jdk-*/bin/jlink --output ${JRE_DIR} --add-modules ${JLINK_MODULES} ${JLINK_OPTIONS} && \
+    # Remove JDK
+    rm -r /tmp/jdk-* && \
+    echo -e "\
+class HelloWorld {\n\
+    public static void main(String[] args) {\n\
+        System.out.println(\"Hello World!\");\n\
+    }\n\
+}\n" > HelloWorld.java && \
+    java HelloWorld.java
+
+
+# Default target is 'base' image
+FROM base
