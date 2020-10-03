@@ -9,7 +9,7 @@ Note than theses images don't include a JRE:
 
 An example below shows how a JRE can be integrated on top of theses images.
 
-## BusyBox based [(busybox/Dockerfile)](https://github.com/xfournet/jready/blob/master/busybox/Dockerfile)
+## BusyBox based [(busybox/Dockerfile)](https://github.com/xfournet/jready/blob/main/busybox/Dockerfile)
 
 Based on the offical [BusyBox glibc image](https://hub.docker.com/_/busybox)
 
@@ -17,7 +17,7 @@ Based on the offical [BusyBox glibc image](https://hub.docker.com/_/busybox)
 [![](https://images.microbadger.com/badges/image/xfournet/jready:busybox-1.32.0.svg)](https://microbadger.com/images/xfournet/jready:busybox-1.32.0)
 
 
-## Alpine based [(alpine/Dockerfile)](https://github.com/xfournet/jready/blob/master/alpine/Dockerfile)
+## Alpine based [(alpine/Dockerfile)](https://github.com/xfournet/jready/blob/main/alpine/Dockerfile)
 
 Based on the offical [Alpine image](https://hub.docker.com/_/alpine) and [Alpine GLIBC package](https://github.com/sgerrand/alpine-pkg-glibc)
 
