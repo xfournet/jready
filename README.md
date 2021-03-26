@@ -21,8 +21,8 @@ Based on the official [BusyBox glibc image](https://hub.docker.com/_/busybox)
 
 Based on the official [Alpine image](https://hub.docker.com/_/alpine) and [Alpine GLIBC package](https://github.com/sgerrand/alpine-pkg-glibc)
 
-[![](https://images.microbadger.com/badges/version/xfournet/jready:alpine-3.13.2.svg)](https://microbadger.com/images/xfournet/jready:alpine-3.13.2)
-[![](https://images.microbadger.com/badges/image/xfournet/jready:alpine-3.13.2.svg)](https://microbadger.com/images/xfournet/jready:alpine-3.13.2)
+[![](https://images.microbadger.com/badges/version/xfournet/jready:alpine-3.13.3.svg)](https://microbadger.com/images/xfournet/jready:alpine-3.13.3)
+[![](https://images.microbadger.com/badges/image/xfournet/jready:alpine-3.13.3.svg)](https://microbadger.com/images/xfournet/jready:alpine-3.13.3)
 
 # Example
 
