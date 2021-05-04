@@ -1,5 +1,5 @@
-ARG busybox_image=busybox:1.33.0-glibc
-ARG debian_image=debian:buster-20200607-slim
+ARG busybox_image=busybox:1.33.1-glibc
+ARG debian_image=debian:buster-20210408-slim
 
 # Extract additionnal glibc files from the debian image
 FROM ${debian_image} as debian
