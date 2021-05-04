@@ -13,8 +13,8 @@ An example below shows how a JRE can be integrated on top of these images.
 
 Based on the official [BusyBox glibc image](https://hub.docker.com/_/busybox)
 
-[![](https://images.microbadger.com/badges/version/xfournet/jready:busybox-1.33.0.svg)](https://microbadger.com/images/xfournet/jready:busybox-1.33.0)
-[![](https://images.microbadger.com/badges/image/xfournet/jready:busybox-1.33.0.svg)](https://microbadger.com/images/xfournet/jready:busybox-1.33.0)
+[![](https://images.microbadger.com/badges/version/xfournet/jready:busybox-1.33.1.svg)](https://microbadger.com/images/xfournet/jready:busybox-1.33.1)
+[![](https://images.microbadger.com/badges/image/xfournet/jready:busybox-1.33.1.svg)](https://microbadger.com/images/xfournet/jready:busybox-1.33.1)
 
 
 ## Alpine based [(alpine/Dockerfile)](https://github.com/xfournet/jready/blob/main/alpine/Dockerfile)
