@@ -30,9 +30,13 @@ jobs:
           context: ./alpine
           target: test
 
-      - name: Compute image tags
-        id: tags
-        run: echo ::set-output name=TAGS::xfournet/jready:${GITHUB_REF#refs/tags/},xfournet/jready:alpine
+      - name: Compute docker metadata
+        id: meta
+        run: |
+          echo ::set-output name=BUILD_DATE::build_date=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+          echo ::set-output name=VCS_REF::vcs_ref=$GITHUB_SHA
+          echo ::set-output name=IMAGE_VERSION::image_version=${GITHUB_REF#refs/tags/}
+          echo ::set-output name=TAGS::xfournet/jready:${GITHUB_REF#refs/tags/},xfournet/jready:alpine
 
       - name: Build and publish Alpine Docker image
         uses: docker/build-push-action@v2.7.0
@@ -40,4 +44,8 @@ jobs:
           builder: ${{ steps.buildx.outputs.name }}
           file: ./alpine/Dockerfile
           context: ./alpine
-          tags: ${{ steps.tags.outputs.TAGS }}
+          build-args: |
+            ${{ steps.meta.outputs.BUILD_DATE }}
+            ${{ steps.meta.outputs.VCS_REF }}
+            ${{ steps.meta.outputs.IMAGE_VERSION }}
+          tags: ${{ steps.meta.outputs.TAGS }}
