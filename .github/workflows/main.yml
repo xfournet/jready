@@ -33,7 +33,7 @@ jobs:
 
       - name: Test build of Alpine Docker image
         id: alpine_build
-        uses: docker/build-push-action@v2.4.0
+        uses: docker/build-push-action@v2.7.0
         with:
           builder: ${{ steps.buildx.outputs.name }}
           file: ./alpine/Dockerfile
@@ -42,7 +42,7 @@ jobs:
 
       - name: Test build of Busybox Docker image
         id: busybox_build
-        uses: docker/build-push-action@v2.4.0
+        uses: docker/build-push-action@v2.7.0
         with:
           builder: ${{ steps.buildx.outputs.name }}
           file: ./busybox/Dockerfile
