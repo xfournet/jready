@@ -1,9 +1,9 @@
-name: Publish Alpine image
+name: Publish Busybox image
 
 on:
   push:
     tags:
-      - alpine-*
+      - busybox-*
 
 jobs:
   release:
@@ -21,11 +21,11 @@ jobs:
           username: ${{secrets.DOCKER_HUB_USERNAME}}
           password: ${{secrets.DOCKER_HUB_ACCESS_TOKEN}}
 
-      - name: Build and test Alpine Docker image
+      - name: Build and test Busybox Docker image
         uses: docker/build-push-action@v2.7.0
         with:
-          file: ./alpine/Dockerfile
-          context: ./alpine
+          file: ./busybox/Dockerfile
+          context: ./busybox
           target: test
 
       - name: Compute docker metadata
@@ -34,13 +34,13 @@ jobs:
           echo ::set-output name=BUILD_DATE::build_date=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
           echo ::set-output name=VCS_REF::vcs_ref=$GITHUB_SHA
           echo ::set-output name=IMAGE_VERSION::image_version=${GITHUB_REF#refs/tags/}
-          echo ::set-output name=TAGS::xfournet/jready:${GITHUB_REF#refs/tags/},xfournet/jready:alpine
+          echo ::set-output name=TAGS::xfournet/jready:${GITHUB_REF#refs/tags/},xfournet/jready:busybox
 
-      - name: Build and publish Alpine Docker image
+      - name: Build and publish Busybox Docker image
         uses: docker/build-push-action@v2.7.0
         with:
-          file: ./alpine/Dockerfile
-          context: ./alpine
+          file: ./busybox/Dockerfile
+          context: ./busybox
           build-args: |
             ${{ steps.meta.outputs.BUILD_DATE }}
             ${{ steps.meta.outputs.VCS_REF }}
