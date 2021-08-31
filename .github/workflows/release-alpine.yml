@@ -6,7 +6,7 @@ on:
       - alpine-*
 
 jobs:
-  test:
+  release:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -49,3 +49,4 @@ jobs:
             ${{ steps.meta.outputs.VCS_REF }}
             ${{ steps.meta.outputs.IMAGE_VERSION }}
           tags: ${{ steps.meta.outputs.TAGS }}
+          push: true
