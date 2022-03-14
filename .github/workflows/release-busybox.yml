@@ -22,7 +22,7 @@ jobs:
           password: ${{secrets.DOCKER_HUB_ACCESS_TOKEN}}
 
       - name: Build and test Busybox Docker image
-        uses: docker/build-push-action@v2.7.0
+        uses: docker/build-push-action@v2.10.0
         with:
           file: ./busybox/Dockerfile
           context: ./busybox
@@ -37,7 +37,7 @@ jobs:
           echo ::set-output name=TAGS::xfournet/jready:${GITHUB_REF#refs/tags/},xfournet/jready:busybox
 
       - name: Build and publish Busybox Docker image
-        uses: docker/build-push-action@v2.7.0
+        uses: docker/build-push-action@v2.10.0
         with:
           file: ./busybox/Dockerfile
           context: ./busybox
