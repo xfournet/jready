@@ -24,7 +24,7 @@ jobs:
 
       - name: Build and test Alpine Docker image
         id: alpine_build
-        uses: docker/build-push-action@v2.7.0
+        uses: docker/build-push-action@v3.0.0
         with:
           file: ./alpine/Dockerfile
           context: ./alpine
@@ -32,7 +32,7 @@ jobs:
 
       - name: Build and test Busybox Docker image
         id: busybox_build
-        uses: docker/build-push-action@v2.7.0
+        uses: docker/build-push-action@v3.0.0
         with:
           file: ./busybox/Dockerfile
           context: ./busybox
