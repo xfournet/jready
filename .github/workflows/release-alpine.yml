@@ -22,7 +22,7 @@ jobs:
           password: ${{secrets.DOCKER_HUB_ACCESS_TOKEN}}
 
       - name: Build and test Alpine Docker image
-        uses: docker/build-push-action@v2.7.0
+        uses: docker/build-push-action@v3.0.0
         with:
           file: ./alpine/Dockerfile
           context: ./alpine
@@ -37,7 +37,7 @@ jobs:
           echo ::set-output name=TAGS::xfournet/jready:${GITHUB_REF#refs/tags/},xfournet/jready:alpine
 
       - name: Build and publish Alpine Docker image
-        uses: docker/build-push-action@v2.7.0
+        uses: docker/build-push-action@v3.0.0
         with:
           file: ./alpine/Dockerfile
           context: ./alpine
